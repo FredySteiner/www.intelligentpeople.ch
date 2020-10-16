@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="www2.intelligentpeople.ch.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="www.intelligentpeople.ch.Global" Language="C#" %>
