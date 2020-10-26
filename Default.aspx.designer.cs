@@ -42,13 +42,13 @@ namespace www.intelligentpeople.ch
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtName;
 
         /// <summary>
-        /// txtEmail-Steuerelement
+        /// txtSubject-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtSubject;
 
         /// <summary>
         /// txtMessage-Steuerelement
@@ -58,6 +58,15 @@ namespace www.intelligentpeople.ch
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtMessage;
+
+        /// <summary>
+        /// txtEmail-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEmail;
 
         /// <summary>
         /// cmdSend-Steuerelement

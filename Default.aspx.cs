@@ -20,10 +20,14 @@ namespace www.intelligentpeople.ch
                 EnableSsl = true
             };
 
+            var subject = !String.IsNullOrEmpty(txtEmail.Value)
+                ? "Contact Form filled by bot"
+                : "Contact Form";
+
             client.Send(new MailMessage("contact@intelligentpeople.ch", "contact@intelligentpeople.ch")
             {
-                ReplyToList = { txtEmail.Value },
-                Subject = "Contact Form",
+                ReplyToList = { txtSubject.Value },
+                Subject = subject,
                 Body = txtMessage.Value
             });
         }
@@ -51,6 +55,7 @@ namespace www.intelligentpeople.ch
             txtName.Value = string.Empty;
             txtEmail.Value = string.Empty;
             txtMessage.Value = string.Empty;
+            txtSubject.Value = string.Empty;
         }
     }
 }
