@@ -48,9 +48,13 @@
             document.getElementById("textslide").innerHTML = quotes[counter];
 
             setTimeout(function () {
-                changeText()
+                changeText();
             }, 1200);
             counter++;
+        }
+
+        function fixForm() {
+            document.getElementsByName("txtMessage").tag = "Foo";
         }
     </script>
     <style>
@@ -106,7 +110,7 @@
     </style>
 </head>
 
-<body class="landing" onload="changeText();">
+<body class="landing" onload="changeText();fixForm();">
 
     <!-- Page Wrapper -->
     <div id="page-wrapper">
@@ -131,11 +135,25 @@
                             <input type="text" name="txtName" id="txtName" value="" placeholder="Name" runat="server" />
                         </div>
                         <div class="6u$ 12u$(xsmall)">
-                            <input type="email" name="txtEmail" id="txtEmail" value="" placeholder="Email" runat="server" />
+                            <input type="email" name="txtSubject" id="txtSubject" value="" placeholder="Email" runat="server" />
                         </div>
                         <div class="12u$">
                             <textarea name="txtMessage" id="txtMessage" placeholder="Ihre Mitteilung" rows="6" runat="server"></textarea>
                         </div>
+                        
+                        <!-- honeypot field -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input
+                                type="email"
+                                name="txtEmail"
+                                id="txtEmail"
+                                tabindex="-1"
+                                value=""
+                                autocomplete="off"
+                                runat="server"
+                            />
+                        </div>
+
                         <div class="12u$" runat="server">
                             <ul class="actions">
                                 <li>
