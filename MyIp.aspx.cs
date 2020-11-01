@@ -4,7 +4,7 @@ namespace www.intelligentpeople.ch
 {
     public partial class MyIp : System.Web.UI.Page
     {
-        protected string GetIpAddress()
+        internal protected static string GetIpAddress()
         {
             HttpContext context = HttpContext.Current;
             string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];

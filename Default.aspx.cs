@@ -20,16 +20,31 @@ namespace www.intelligentpeople.ch
                 EnableSsl = true
             };
 
-            var subject = !String.IsNullOrEmpty(txtEmail.Value)
-                ? "Contact Form filled by bot"
-                : "Contact Form";
-
-            client.Send(new MailMessage("contact@intelligentpeople.ch", "contact@intelligentpeople.ch")
+            if (!String.IsNullOrEmpty(txtEmail.Value))
             {
-                ReplyToList = { txtSubject.Value },
-                Subject = subject,
-                Body = txtMessage.Value
-            });
+                // Potentially filled by bot
+                var ipaddress = MyIp.GetIpAddress();
+
+                client.Send(new MailMessage("contact@intelligentpeople.ch", "honeypot@intelligentpeople.ch")
+                {
+                    Subject = "Contact Form filled by bot",
+                    Body =
+                        $"Ip Address used: {ipaddress}{Environment.NewLine}" +
+                        $"Subject: {txtSubject.Value}{Environment.NewLine}" +
+                        $"Email: {txtEmail.Value}{Environment.NewLine}" +
+                        $"Message: {txtMessage.Value}"
+                });
+            }
+            else
+            {
+                // Hopefully human
+                client.Send(new MailMessage("contact@intelligentpeople.ch", "contactform@intelligentpeople.ch")
+                {
+                    Subject = "Contact Form",
+                    ReplyToList = { txtSubject.Value },
+                    Body = txtMessage.Value
+                });
+            }
         }
 
         protected void SendButton_Click(object sender, EventArgs e)
