@@ -121,7 +121,10 @@
                 <h3>Ihr persönlicher IT Dienstleister</h3>
                 <div id="textslide"></div>
             </div>
-            <a href="#contact" class="more scrolly">Kontakt</a>
+            <a href="#contact" class="more scrolly">Kontakt<br />
+                <br />
+                <span class="icon fa-arrow-down fa-2x"></span>
+            </a>
             <p>&nbsp;</p>
         </section>
 
@@ -140,7 +143,7 @@
                         <div class="12u$">
                             <textarea name="txtMessage" id="txtMessage" placeholder="Ihre Mitteilung" rows="6" runat="server"></textarea>
                         </div>
-                        
+
                         <!-- honeypot field -->
                         <div style="position: absolute; left: -5000px;" aria-hidden="true">
                             <input
@@ -150,8 +153,7 @@
                                 tabindex="-1"
                                 value=""
                                 autocomplete="off"
-                                runat="server"
-                            />
+                                runat="server" />
                         </div>
 
                         <div class="12u$" runat="server">
@@ -172,8 +174,9 @@
         <!-- Footer -->
         <footer id="footer">
             <ul class="icons">
+                <li><a href="#" class="icon fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
                 <li><a href="#" class="icon fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon fa-envelope-o" target="_blank"><span class="label">Email</span></a></li>
                 <li><a href="#" class="icon fa-whatsapp"><span class="label">Whatsapp</span></a></li>
             </ul>
             <ul class="copyright">

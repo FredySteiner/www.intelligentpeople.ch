@@ -51,7 +51,6 @@
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\ie8.css" />
     <Content Include="assets\css\ie9.css" />
-    <Content Include="assets\css\images\arrow.svg" />
     <Content Include="assets\css\images\bars.svg" />
     <Content Include="assets\css\images\close.svg" />
     <Content Include="assets\css\main.css" />
