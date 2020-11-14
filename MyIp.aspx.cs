@@ -6,7 +6,9 @@ namespace www.intelligentpeople.ch
     {
         internal protected static string GetIpAddress()
         {
-            HttpContext context = HttpContext.Current;
+            HttpContext context = HttpContext.Current; 
+            string result = context.Request.ServerVariables["REMOTE_ADDR"];
+
             string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
             if (!string.IsNullOrEmpty(ipAddress))
@@ -14,11 +16,11 @@ namespace www.intelligentpeople.ch
                 string[] addresses = ipAddress.Split(',');
                 if (addresses.Length != 0)
                 {
-                    return addresses[0];
+                    result = addresses[0];
                 }
             }
 
-            return context.Request.ServerVariables["REMOTE_ADDR"];
+            return result;
         }
     }
 }
