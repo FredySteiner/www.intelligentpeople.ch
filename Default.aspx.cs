@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Mail;
 
@@ -20,12 +22,24 @@ namespace www.intelligentpeople.ch
                 EnableSsl = true
             };
 
-            if (!String.IsNullOrEmpty(txtEmail.Value))
+            if (!string.IsNullOrEmpty(txtEmail.Value))
             {
                 // Potentially filled by bot
                 var ipaddress = MyIp.GetIpAddress();
 
-                client.Send(new MailMessage("contact@intelligentpeople.ch", "honeypot@intelligentpeople.ch")
+                try{
+                    if (!Global.IpList.Contains(ipaddress))
+                    {
+                        Global.IpList.Add(ipaddress);
+                        File.WriteAllLines(@"c:\Temp\IpList.txt", Global.IpList);
+                    }
+                }
+                catch
+                {
+                    // ignored
+                }
+
+                client.Send(new MailMessage("bot@intelligentpeople.ch", "honeypot@intelligentpeople.ch")
                 {
                     Subject = "Contact Form filled by bot",
                     Body =
@@ -54,7 +68,7 @@ namespace www.intelligentpeople.ch
                 SendMail();
                 ResetForm();
             }
-            catch (Exception)
+            catch
             {
                 // ignored
             }
