@@ -27,11 +27,18 @@ namespace www.intelligentpeople.ch
                 // Potentially filled by bot
                 var ipaddress = MyIp.GetIpAddress();
 
-                try{
+                var subject = "Contact Form filled by bot";
+
+                try
+                {
                     if (!Global.IpList.Contains(ipaddress))
                     {
                         Global.IpList.Add(ipaddress);
                         File.WriteAllLines(@"c:\Temp\IpList.txt", Global.IpList);
+                    }
+                    else
+                    {
+                        subject= "Contact Form filled by recurring bot";
                     }
                 }
                 catch
@@ -41,7 +48,7 @@ namespace www.intelligentpeople.ch
 
                 client.Send(new MailMessage("bot@intelligentpeople.ch", "honeypot@intelligentpeople.ch")
                 {
-                    Subject = "Contact Form filled by bot",
+                    Subject = subject,
                     Body =
                         $"Ip Address used: {ipaddress}{Environment.NewLine}" +
                         $"Subject: {txtSubject.Value}{Environment.NewLine}" +
