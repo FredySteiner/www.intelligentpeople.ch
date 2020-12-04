@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq.Expressions;
 using System.Net;
 using System.Net.Mail;
 
@@ -10,6 +9,17 @@ namespace www.intelligentpeople.ch
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var ipaddress = MyIp.GetIpAddress();
+
+            if (Global.IpList.Contains(ipaddress))
+            {
+                Response.Clear();
+                Response.StatusCode = 429;
+                Response.StatusDescription = "Too Many Requests";
+                Response.End();
+                return;
+            }
+
             cmdReset.Attributes.Add("onClick", "document.forms[0].reset();return false;");
         }
 
@@ -38,7 +48,11 @@ namespace www.intelligentpeople.ch
                     }
                     else
                     {
-                        subject= "Contact Form filled by recurring bot";
+                        Response.Clear();
+                        Response.StatusCode = 403;
+                        Response.StatusDescription = "Forbidden";
+                        Response.End();
+                        return;
                     }
                 }
                 catch
